@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Belarus1.Areas.Identity.Data
+@inject SignInManager<BelarusUser> SignInManager
+@inject UserManager<BelarusUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Belarus1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/~/css/MainStyle.css.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Belarus1.styles.css" asp-append-version="true" />
+</head>
+
+<body onload="loadData()">
+    
+    <header>
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="navbar">
+   
+  <a href="@Url.Action("Index","Home")"><i class="fa fa-fw fa-home"></i>Главная</a>
+ 
+  <a href="@Url.Action("Index","Foods")"><i class="fa fa-shopping-basket"></i> Меню</a>
+  
+
+  <a href="@Url.Action("Index","Orders")" class="notification">
+    <span><i class="fa fa-shopping-basket"></i>Корзина</span>
+    <span  class="badge" id="result_int"></span>
+</a>
+
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+  <a href="@Url.Action("Details","Orders")"><i class="fa fa-history" aria-hidden="true"></i>Ваши заказы</a>
+        <a id="manage" class="nav-link text-light"  asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)</a>@*class="nav-link text-dark"*@
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="navbar button" @*class="nav-link btn btn-link text-dark"*@>Выйти</button>
+        </form>
+}
+else
+{
+        <a class="nav-link text-light" id="login" id="register" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+        <a class="nav-link text-light"  id="login" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+}
+
+
+</div>
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - WebApplication7 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

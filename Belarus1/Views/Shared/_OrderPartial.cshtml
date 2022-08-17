@@ -1,0 +1,71 @@
+﻿@using Belarus1.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@model Belarus1.AUTHDBContext
+@inject SignInManager<BelarusUser> SignInManager
+@inject UserManager<BelarusUser> UserManager
+
+
+
+
+
+   <body>
+   <div class="CartContainer" id="CartContainer">
+   	   <div class="Header">
+   	   	<h3 class="Heading">Ваш заказ:</h3>
+   	   	<h5 class="Action" onclick="ClearOrders()">Удалить всё</h5>
+   	   </div>
+
+@{
+            double totalPrice = 0;
+            int totalAmount = 0;
+        }
+        <div id="deleteAll">
+
+        @*@foreach(var item in Belarus1.Controllers.FoodsController.korzinas){*@
+        @{var userId=UserManager.GetUserId(User);}
+        
+        @foreach(var item in Model.TemporaryOrders.Where(p=>p.UserId==userId))
+            {
+                
+            
+            var dbItem=Model.Foods.Where(p=>p.Id==item.FoodId).FirstOrDefault();
+            var base64 = Convert.ToBase64String( dbItem.Image);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            totalPrice+= Convert.ToDouble(dbItem.Price)*item.Amount;   
+            var localPrice=Convert.ToDouble(dbItem.Price)*item.Amount;
+            totalAmount += item.Amount;
+            <div class="Cart-Items" id="CartBox @item.FoodId">
+   	   	  <div class="image-box">
+   	   	  	<img src="@imgSrc" style={{ height="120px" }} />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">@dbItem.Name</h1>
+   	   	  	<h3 class="subtitle">@dbItem.Weight г</h3>
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div class="btn" onclick="minus(@item.FoodId)">-</div>
+   	   	  	<div id="korzinaCounter @item.FoodId" class="count">@item.Amount</div>@*Сделать скриптик для этой штуки + норм ид сделать*@
+   	   	  	<div class="btn" onclick="plus(@item.FoodId)">+</div>
+   	   	  </div>
+   	   	  <div class="prices">
+   	   	  	<div class="amount" id="Price @dbItem.Id" >@localPrice руб.</div>
+   	   	  	<div class="remove"><u>Удалить</u></div>
+   	   	  </div>
+   	      </div>
+
+   	   <h3></h3>
+}
+        </div>
+   	 <hr> 
+   	 <div class="checkout">
+   	 <div class="total">
+   	 	<div>
+   	 		<div class="Subtotal">Ваш заказ:</div>
+   	 		<div class="items" id="totalAmount">@totalAmount шт.</div>
+   	 	</div>
+   	 	<div class="total-amount" id="totalPrice">@totalPrice руб.</div>
+   	 </div>
+   	 <button class="button"  onclick="CreateOrder()">Оформить заказ</button></div>
+   </div>
+</body>
+

@@ -1,0 +1,122 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-4167r7b1ee] {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a[b-4167r7b1ee] {
+    color: #0077cc;
+}
+
+.btn-primary[b-4167r7b1ee] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-4167r7b1ee], .nav-pills .show > .nav-link[b-4167r7b1ee] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+    .nav-pills .nav-link.active[b-4167r7b1ee], .nav-pills .show > .nav-link :hover[b-4167r7b1ee]{
+        background:#000;
+    }
+
+    .border-top[b-4167r7b1ee] {
+        border-top: 1px solid #e5e5e5;
+    }
+
+.border-bottom[b-4167r7b1ee] {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-4167r7b1ee] {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-4167r7b1ee] {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer[b-4167r7b1ee] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+/* Style the navigation bar */
+.navbar[b-4167r7b1ee] {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
+
+    /* Navbar links */
+    .navbar a[b-4167r7b1ee] {
+        float: left;
+        text-align: center;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .navbar button[b-4167r7b1ee] {
+        border: 0px;
+        float: left;
+        text-align: center;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+    }
+        .navbar button:hover[b-4167r7b1ee] {
+            background-color: #000;
+        }
+        /* Navbar links on mouse-over */
+        .navbar a:hover[b-4167r7b1ee] {
+            background-color: #000;
+        }
+
+/* Current/active navbar link */
+.active[b-4167r7b1ee] {
+    background-color: #04AA6D;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+    .navbar a[b-4167r7b1ee] {
+        float: none;
+        display: block;
+    }
+}
+
+.notification[b-4167r7b1ee] {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+    .notification:hover[b-4167r7b1ee] {
+        background: red;
+    }
+
+    .notification .badge[b-4167r7b1ee] {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background: red;
+        color: white;
+    }
